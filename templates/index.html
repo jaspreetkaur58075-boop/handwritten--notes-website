@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Notes</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f9ff;
+            color: #172033;
+        }
+
+        nav {
+            height: 70px;
+            background: #101d4a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-item:center;
+            gap: 6px;
+        }
+
+        .get-started {
+            background: #5046e5;
+            padding: 12px 22px;
+            border-radius: 8px;
+        }
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            gap: 50px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 span {
+            color: #2454d6;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #5f6675;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #2454d6;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2454d6;
+            border: 1px solid #d8def0;
+        }
+
+        .note-card {
+            width: 420px;
+            height: 390px;
+            background: #eef1ff;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .paper {
+            width: 260px;
+            height: 310px;
+            background: white;
+            border: 3px solid #172033;
+            border-radius: 8px;
+            padding: 35px 25px;
+            transform: rotate(-4deg);
+            box-shadow: 0 15px 35px rgba(30, 50, 100, 0.15);
+        }
+
+        .paper h2 {
+            text-align: center;
+            color: #172033;
+            margin-bottom: 25px;
+        }
+
+        .line {
+            height: 6px;
+            background: #6684df;
+            border-radius: 5px;
+            margin: 18px 0;
+        }
+
+        .line:nth-child(3) {
+            width: 85%;
+        }
+
+        .line:nth-child(4) {
+            width: 75%;
+        }
+
+        .line:nth-child(5) {
+            width: 90%;
+        }
+
+        .line:nth-child(6) {
+            width: 65%;
+        }
+
+        .features {
+            background: white;
+            padding: 55px 8%;
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature {
+            max-width: 250px;
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            background: #eef1ff;
+            color: #2454d6;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #687080;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 850px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 45px 5%;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .note-card {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+
+    nav {
+        height: auto;
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    nav {
+        padding: 12px 4%;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+    <div class="logo">📘 Handwritten Notes</div>
+
+    <div class="nav-links">
+        <a href="/">🏠 Home</a>
+        <a href="/notes">📚 My Notes</a>
+        <a href="/upload">📤 Upload</a>
+        <a href="/login">🔐 Login</a>
+        <a href="/signup" class="signup-btn">✨ Sign Up</a>
+        <a href="/upload" class="get-started">🚀 Get Started</a>
+    </div>
+</nav>
+
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>
+                Your Handwritten
+                <br>
+                Notes, <span>Always Accessible</span>
+            </h1>
+
+            <p>
+                Upload, store and share your handwritten notes and
+                PDF files. Keep your study material organized and
+                accessible anytime, anywhere.
+            </p>
+
+            <div class="buttons">
+                <a href="/upload" class="btn btn-primary">
+                    Upload Notes
+                </a>
+
+                <a href="/notes" class="btn btn-secondary">
+                    Explore Notes
+                </a>
+            </div>
+        </div>
+
+        <div class="note-card">
+            <div class="paper">
+                <h2>Better<br>Notes</h2>
+
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features">
+
+        <div class="feature">
+            <div class="feature-icon">⬆</div>
+            <h3>Easy Upload</h3>
+            <p>Upload your handwritten notes and PDF files easily.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure Storage</h3>
+            <p>Keep your important study material organized.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🌐</div>
+            <h3>Access Anywhere</h3>
+            <p>Open your notes whenever and wherever you need them.</p>
+        </div>
+
+    </section>
+
+</body>
+</html>
+
+ 
+    <!-- ================= LOWER SECTION ================= -->
+
+<section class="features">
+
+    <div class="section-title">
+        <h2>Everything You Need for Better Notes</h2>
+        <p>Keep your handwritten notes safe, organized and accessible anytime.</p>
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">📤</div>
+            <h3>Easy Upload</h3>
+            <p>Upload your handwritten notes quickly and keep them stored safely.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Organized Notes</h3>
+            <p>Keep all your study material organized in one simple place.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Access Anywhere</h3>
+            <p>Open your notes whenever and wherever you need them.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h2>Handwritten Notes</h2>
+            <p>Your notes, always accessible.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#upload">Upload Notes</a>
+            <a href="#notes">My Notes</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Handwritten Notes. All rights reserved.</p>
+    </div>
+
+</footer>
