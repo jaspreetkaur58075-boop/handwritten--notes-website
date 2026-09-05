@@ -1,8 +1,11 @@
-from flask import Flask, request, redirect, url_for, render_template_string,session
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
+@app.route("/google971a16a12f2883d8.html")
+def google_verification():
+    return send_from_directory(".","google971a16a12f2883d8.html")
 users = {}
 app.secret_key = "handwritten-notes-secret-key"
 
@@ -1968,8 +1971,8 @@ def home():
     files.sort(reverse=True)
 
 
-    return render_template_string(
-        HTML,
+    return render_template(
+       "index.html",
         files=files
     )
 
@@ -1980,7 +1983,7 @@ def notes():
         files = os.listdir(UPLOAD_FOLDER)
 
     files.sort(reverse=True)
-    return render_template_string(
+    return render_template(
         NOTES_HTML,
         files=files
     )    
@@ -2051,6 +2054,9 @@ def delete_file(filename):
         os.remove(file_path)
 
     return redirect(url_for("notes"))  
+@app.route("/google971a16a12f2883d8.html")
+def google_verification():
+    return send_from_directory("." "google971a16a12f2883d8.html")
 
 # ================= RUN =================
 
