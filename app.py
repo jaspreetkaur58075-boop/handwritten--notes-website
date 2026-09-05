@@ -1,11 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, request, redirect, url_for, send_from_directory,render_template
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
 @app.route("/google971a16a12f2883d8.html")
 def google_verification():
-    return send_from_directory(".","google971a16a12f2883d8.html")
+    return send_from_directory(
+        app.root_path,
+        "google971a16a12f2883d8.html"
+        )
 users = {}
 app.secret_key = "handwritten-notes-secret-key"
 
@@ -2054,9 +2057,6 @@ def delete_file(filename):
         os.remove(file_path)
 
     return redirect(url_for("notes"))  
-@app.route("/google971a16a12f2883d8.html")
-def google_verification():
-    return send_from_directory("." "google971a16a12f2883d8.html")
 
 # ================= RUN =================
 
